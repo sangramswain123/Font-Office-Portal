@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<title>Signup Page</title>
+<style>
+.custom-col1 {
+    background-color: #f0f0f0; /* Set your desired background color */
+    padding: 20px; /* Add some padding */  
+}
+.custom-col2 {
+    background-color: #FF4500;
+    padding-top: 200px; /* Add some padding */
+    color: white; /* Set text color to white */
+    align-items: center; /* Center vertically */
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+	<div class="container mt-5 mr-5">
+		<div class="row">
+			
+			<div class="col-md-6 custom-col1">
+			<div class="text-center">
+				<img alt="" src="images/navbar.jpg">
+			</div>
+			<br/>
+			<h5 class="text-center">Unlock Your Account Here</h5>
+			<br/>
+				<form th:action="@{/unlock}" th:object="${unlock}" method="POST">
+					<div class="form-group row">
+						<h6>Your Email : <a th:text="${unlock.email}"></a></h6>
+					</div>
+					<h5 th:text="${result}" class="text-danger"></h5>
+					<input type="hidden" th:field="${unlock.email}">
+					
+					<div class="form-group row">
+						<label for="inputEmail3" class="col-sm-2 col-form-label">Temporary Password</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="inputEmail3"
+								placeholder="Temporary Password" th:field="*{tempPwd}">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="inputEmail3" class="col-sm-2 col-form-label">New Password</label>
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="inputEmail3"
+								placeholder="New Password" th:field="*{newPwd}">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="inputPassword3" class="col-sm-2 col-form-label">Confirm Password</label>
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="inputPassword3"
+								placeholder="Confirm Password" th:field="*{cnfPwd}">
+						</div>
+					</div>
+					<br />
+					<div class="form-group row">
+						<div class="col-sm-10">
+							<button type="submit" class="btn btn-danger">Unlock</button>
+						</div>
+					</div>
+					<br /> 
+					<p>
+						Already have account?
+						<a class="btn btn-outline-danger" href="/login">Login</a>
+					</p>
+
+				</form>
+			</div>
+			<div class="col-md-6 custom-col2">
+				<h5>Ashok IT is more than a <br/>software training institute </h5>
+				<br/>
+				<p>Student satisfaction is most important for us.</p>
+			</div>
+		</div>
+	</div>
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+</body>
+</html>
